@@ -4,7 +4,7 @@ pipeline {
      maven "Maven3"  
    }
    environment {
-       scannerHome = tool 'sonar scaner'
+       scannerHome = tool 'SonarQube scaner'
                //This can be nexus 3 or Nexus 2
         NEXUS_VERSION= "nexus3"
         //This can be http or https
