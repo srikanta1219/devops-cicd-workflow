@@ -25,7 +25,7 @@ pipeline {
       }
     stage('Static code Analisys'){
       steps {
-           withSonarQubeEnv('sonar server') {
+           withSonarQubeEnv('SonarQube Server') {
             /*sh "${scannerHome}/bin/sonar-scanner -Dsonar.sourceEncoding=UTF-8 -Dsonar.projectKey=testpipeline -Dsonar.projectName=testpipeline -Dsonar.projectVersion=1.0"*/
             sh "mvn sonar:sonar"
         }
