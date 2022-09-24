@@ -74,14 +74,14 @@
 	<distributionManagement>
 	
 		<repository>
-			<id>MPMS_Release</id>
+			<id>devops-mvn-repo-release</id>
 			
-			<url>http://13.232.26.148:8081/repository/MPMS_Release/</url>
+			<url>http://192.168.56.105:8081/repository/devops-mvn-repo-release/</url>
 		</repository>
 		
 		<snapshotRepository>
-			<id>MPMS_Snapshot</id>
-		       <url>http://13.232.26.148:8081/repository/MPMS_Snapshot/</url>
+			<id>devops-mvn-repo-snapshot</id>
+		       <url>http://192.168.56.105:8081/repository/devops-mvn-repo-snapshot/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	

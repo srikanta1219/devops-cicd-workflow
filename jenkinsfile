@@ -1,9 +1,7 @@
 pipeline {
-   agent {
-       label 'slave'
-   }
+   agent any
    tools {
-     maven "maven"  
+     maven "Maven3"  
    }
    environment {
        scannerHome = tool 'sonar scaner'
@@ -12,17 +10,17 @@ pipeline {
         //This can be http or https
         NEXUS_PROTOCOL= "http"
         //Where your Nexus is running
-        NEXUS_URL= "192.168.56.40:8081"
+        NEXUS_URL= "192.168.56.105:8081"
         // Repository Name where we will upload the artifacts
-        NEXUS_REPOSITORY= "nexus-repo"
+        NEXUS_REPOSITORY= "devops-mvn-repo"
         // Jenkins credentials id to authenticate to Nexus OSS
-        NEXUS_CREDENTIAL_ID= "nexus-creds"
+        NEXUS_CREDENTIAL_ID= "nexus3-credential"
    }
 
    stages {
       stage('Git Checkout') {
          steps {
-            git 'https://github.com/Rashmi-devops/loginapp.git'   
+            git 'https://github.com/srikanta1219/devops-cicd-workflow.git'   
          }
       }
     stage('Static code Analisys'){
@@ -44,12 +42,5 @@ pipeline {
         sh "mvn deploy"
        }
      }
-    stage ('Ansible Tower'){
-       steps {
-         ansiColor('xterm') {
-          ansibleTower async: false, credential: '', extraVars: '', importTowerLogs: true, importWorkflowChildLogs: false, inventory: '', jobTags: '', jobTemplate: 'tomcat-job', jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: false, towerCredentialsId: 'Tower-Creds', towerServer: 'Ansible Tower', verbose: false
-}  
-       }    
-    }
    }
    }
