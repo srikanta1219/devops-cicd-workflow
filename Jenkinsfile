@@ -4,7 +4,7 @@ pipeline {
      maven "Maven3"  
    }
    environment {
-       scannerHome = tool "SonarQube Scanner"
+       //scannerHome = tool "SonarQube Scanner"
                //This can be nexus 3 or Nexus 2
         NEXUS_VERSION= "nexus3"
         //This can be http or https
@@ -23,14 +23,15 @@ pipeline {
             git 'https://github.com/srikanta1219/devops-cicd-workflow.git'   
          }
       }
-    stage('Static code Analisys'){
-      steps {
-           withSonarQubeEnv('SonarQube Server') {
-            /*sh "${scannerHome}/bin/sonar-scanner -Dsonar.sourceEncoding=UTF-8 -Dsonar.projectKey=testpipeline -Dsonar.projectName=testpipeline -Dsonar.projectVersion=1.0"*/
-            sh "mvn sonar:sonar"
+      stage("SonarQube analysis") {
+        steps {
+            script {
+                def scannerHome = tool 'SonarQube Scanner';
+                withSonarQubeEnv('SonarQube Server') {
+                    sh 'mvn clean package sonar:sonar'
+                }
+            }
         }
-      }    
-        
     }
     stage ('Maven Goal'){
       steps {
