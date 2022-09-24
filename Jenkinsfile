@@ -25,7 +25,7 @@ pipeline {
       }
     stage('Static code Analisys'){
       steps {
-            withSonarQubeEnv(credentialsId: 'sonarqube-credental', installationName: 'SonarQube') {
+            withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
             /*sh "${scannerHome}/bin/sonar-scanner -Dsonar.sourceEncoding=UTF-8 -Dsonar.projectKey=testpipeline -Dsonar.projectName=testpipeline -Dsonar.projectVersion=1.0"*/
               /*sh "mvn sonar:sonar"*/
               sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
