@@ -20,7 +20,7 @@ pipeline {
    stages {
       stage('Git Checkout') {
          steps {
-            git 'https://github.com/srikanta1219/devops-cicd-workflow.git'   
+            git 'https://github.com/ravdy/sonar-project.git'   
          }
       }
     stage('Static code Analisys'){
