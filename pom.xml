@@ -76,12 +76,12 @@
 		<repository>
 			<id>devops-mvn-repo-release</id>
 			
-			<url>http://192.168.56.105:8081/repository/devops-mvn-repo-release/</url>
+			<url>http://192.168.56.107:8081/repository/devops-mvn-repo-release/</url>
 		</repository>
 		
 		<snapshotRepository>
 			<id>devops-mvn-repo-snapshot</id>
-		       <url>http://192.168.56.105:8081/repository/devops-mvn-repo-snapshot/</url>
+		       <url>http://192.168.56.107:8081/repository/devops-mvn-repo-snapshot/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	
