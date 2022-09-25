@@ -4,7 +4,7 @@ pipeline {
      maven "Maven3"  
    }
    environment {
-        scannerHome = tool "SonarQube Scanner-4.7"
+        scannerHome = tool "sonar_scanner"
                //This can be nexus 3 or Nexus 2
         NEXUS_VERSION= "nexus3"
         //This can be http or https
@@ -25,7 +25,7 @@ pipeline {
       }
     stage('Static code Analisys'){
       steps {
-            withSonarQubeEnv('SonarQube-9.4') {
+            withSonarQubeEnv('SonarQube') {
             /*sh "${scannerHome}/bin/sonar-scanner -Dsonar.sourceEncoding=UTF-8 -Dsonar.projectKey=testpipeline -Dsonar.projectName=testpipeline -Dsonar.projectVersion=1.0"*/
               sh "mvn sonar:sonar"
              /* sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar'8*/
