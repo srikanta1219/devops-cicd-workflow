@@ -23,7 +23,12 @@ pipeline {
             git 'https://github.com/srikanta1219/devops-cicd-workflow.git'   
          }
       }
-    stage('Static code Analisys'){
+    stage ('Maven Goal'){
+      steps {
+         sh "mvn clean install package" 
+      }    
+    }
+        stage('Static code Analisys'){
       steps {
             withSonarQubeEnv('SonarQube') {
             /*sh "${scannerHome}/bin/sonar-scanner -Dsonar.sourceEncoding=UTF-8 -Dsonar.projectKey=testpipeline -Dsonar.projectName=testpipeline -Dsonar.projectVersion=1.0"*/
@@ -32,11 +37,6 @@ pipeline {
         }
       }    
         
-    }
-    stage ('Maven Goal'){
-      steps {
-         sh "mvn clean install package" 
-      }    
     }
     stage ('Deploying Artifact'){
       steps {
